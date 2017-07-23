@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
+    <title>Stock Visualizer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css">
+    <link rel="stylesheet" href="/nvd3/nv.d3.min.css">
+</head>
+<body class="container">
+<div class="page-header" id="header">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <h1>Stock Visualizer</h1>
+            <p class="lead">Legen-waitforit-dary</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Symbol" id="stock-symbol">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="add-stock-button">Add</button>
+            </span>
+        </div>
+        <br>
+        <div class="list-group table-of-contents" id="stock-list">
+        </div>
+         <!-- Create a stock trend table that shows stock price difference and trend within time elapsed -->
+        <div class="col-lg-2 col-md-2 col-sm-2 list-group table-of-contents" id="stock-trends"> 
+            <table class="table table-hover table-bordered" id="stock-trend-table">
+                <thead>
+                    <tr>
+                        <th class="col-lg-2" style="font-size: 50%" >Stock Symbol</th>
+                        <th class="col-lg-2" style="font-size: 50%" >Trade Time</th>
+                        <th class="col-lg-2" style="font-size: 50%" >Price Change</th>
+                        <th class="col-lg-2" style="font-size: 50%" >Trend</th> 
+                        <th class="col-lg-2" style="font-size: 50%">Time Elapsed</th> 
+                    </tr>
+                </thead>
+                <tbody id="stock-trend">
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <div id="chart" class="col-lg-10 col-md-10 col-sm-10" style="border-left: 1px solid grey">
+        <svg></svg>
+    </div>
+
+    <!-- Create a stock tweet table that shows tweets associate with the stocks, as long as their user_id, user_name and the time created -->
+    <div class="col-lg-10 col-md-10 col-sm-10" id="stock-tweets">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-lg-2" style="font-size: 50%" >Stock Symbol</th>
+                    <th class="col-lg-2" style="font-size: 50%" >Tweet User Id</th>
+                    <th class="col-lg-2" style="font-size: 50%" >Tweet User Name</th>
+                    <th class="col-lg-2" style="font-size: 50%" >Tweet Created Time</th> 
+                    <th class="col-lg-10" style="font-size: 50%">Tweet Text</th> 
+                </tr>
+            </thead>
+            <tbody id="stock-tweet">
+                    
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/jquery/jquery.min.js"></script>
+<script src="/d3/d3.min.js"></script>
+<script src="/nvd3/nv.d3.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/main.js"></script>
+</body>
+</html>
