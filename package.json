@@ -1,0 +1,23 @@
+{
+  "name": "stock-analyer",
+  "version": "0.0.1",
+  "description": "simple web app to visualize data",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "d3": "^3.4.4",
+    "express": "^4.14.0",
+    "jquery": "^3.1.0",
+    "minimist": "^1.2.0",
+    "nvd3": "^1.8.4",
+    "redis": "^2.6.2",
+    "smoothie": "^1.27.0",
+    "socket.io": "^1.7.4"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
