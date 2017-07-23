@@ -5,7 +5,7 @@ Developed a high performance data processing platform using Apache Kafka, Apache
 ### This program is used to retrieve stocks data from Google Finance and tweets associated with the stocks through tweepy API. The stock symbol is from user's input. The supported RESTFUL request type is POST and DELETE, so user can retrive stock or delete stock.
 ### After fetching stocks data and tweets the program will send the stock data to Kafka using their respective topic.
 
-## assignment6.py
+## worker.py
 ### This is the major program that is used to process the streaming data sent via Kafka. There are two incoming data stream, stocks and tweets. Two direct spark stream are created to consume the Kafka data. The stock stream is processed to calculate the average stock price and the daily stock trend, and the tweet stream is processed to get the twitter user and their tweets (sentiment) towards the stock. Finally the results are stored into Cassandra.
 
 # Steps to run the program:
@@ -19,7 +19,7 @@ python tweets_producer.py
 
 ### Start spark streaming process:
 ```
-spark-submit  assignment6.py
+spark-submit  worker.py
 ```
 
 # Output: 
@@ -104,3 +104,17 @@ spark-submit  assignment6.py
          SNAP | 850439088809287680 |                                                                                                                        I fw snap🥀 https://t.co/jRj5d1NPbY | 2017-05-11 06:44:54.000000-0700 |       xokaiileee
 ~~~
 
+# Visualization of Stock trend, price graph, and tweets associate with the stock
+### How to run:
+### We first launch web server
+
+```
+python redis_publisher.py stock tweet test localhost:9092 localhost 6379 data tweet trend
+node index.js --port=3000 --redis_host=localhost --redis_port=6379 --subscribe_channel=data --subscribe_tweet_channel=tweet --subscribe_trend_channel=trend
+```
+
+### The data is already processed by worker. We can visualize stock trend within a few days (time elapsed) and tweets along with stock price.
+
+!['nodejs_1'](https://github.com/hpnhxxwn/cs502-1702/blob/master/Isabella/assignment8/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-05-19%20%E4%B8%8B%E5%8D%886.54.07.png?raw=true)
+
+!['nodejs_2'](https://github.com/hpnhxxwn/cs502-1702/blob/master/Isabella/assignment8/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-05-19%20%E4%B8%8B%E5%8D%886.54.21.png?raw=true)
